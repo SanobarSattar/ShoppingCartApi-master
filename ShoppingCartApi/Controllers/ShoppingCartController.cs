@@ -39,7 +39,7 @@ namespace ShoppingCartApi.Controllers
         }
         [HttpGet]
         [Route("api/AddToCart/{Id}")]
-        public void AddToCart(int Id)
+        public bool AddToCart(int Id)
         {
             MyCart sc = null;
 
@@ -60,9 +60,18 @@ namespace ShoppingCartApi.Controllers
             item.Count = 1;
             item.Product = prod;
 
-            sc.Items.Add(item);
+            var product = sc.Items.Find(i => i.Product.Id == Id);
+            if (product != null)
+            {
+                product.Count++;
+            }
+            else
+            {
+                sc.Items.Add(item);
+            }
 
             HttpContext.Current.Session["sc"] = sc;
+            return true;
         }
 
         [HttpGet]

@@ -28,11 +28,11 @@
             <div class="cart-item-info">
                 <h3>{{Name}}<span>Pickup time:</span></h3>
                 <ul class="qty">
-                    <li><p>Min. order value:</p></li>
+                    <li><p>Min. order value:{{Qty}}</p></li>
                     <li><p>FREE delivery</p></li>
                 </ul>
                 <div class="delivery">
-                    <p>Service Charges : ${{100}}</p>
+                    <p>Service Charges : ${{Price}}</p>
                     <span>
                     <script></script></span>
                     <div class="clearfix"></div>
@@ -69,6 +69,7 @@
                         CP = CP.replace('{{Image}}', item.ImageUrl);
                         CP = CP.replace('{{Price}}', item.Price);
                         CP = CP.replace('{{Id}}', item.Id);
+                        CP = CP.replace("Qty", cart.Items[i].Count);
                         cartproducts.innerHTML += CP;
 
                     }
@@ -97,20 +98,17 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><h1>BIKE STOCK</h1></a>
-           
-             <!--start-->
-            
-
-            <!--end-->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-
-                    <li><br /><a class="cartLink" href="Index.html" style="color:white;">Products</a></li>
-                    <li><br /><a class="cartLink" href="cart.html" style="color:white;">My Cart</a></li>
+                    <li><a class="cartLink" href="Index.html" style="color:white;">Products</a></li>
+                   &nbsp;&nbsp;&nbsp;
+                    <li><a class="cartLink" href="cart.html" style="color:white;">My Cart</a></li>
+                    &nbsp;&nbsp;&nbsp;
+                    <li><a class="cartLink" href="Check.html" style="color:white;">Checkout</a></li>
 
 
                     <li class="nav-item active">
